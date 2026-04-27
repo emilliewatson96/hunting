@@ -1,0 +1,88 @@
+#===============================================================================
+# autorecon Configuration File
+#===============================================================================
+# This file contains all configurable options for the reconnaissance script.
+# Edit values as needed for your assessment requirements.
+#===============================================================================
+
+#-------------------------------------------------------------------------------
+# Rate Limiting & Performance
+#-------------------------------------------------------------------------------
+# Requests per second (adjust based on target tolerance and your bandwidth)
+rate_limit: 100
+
+# Number of concurrent threads (adjusted automatically based on system resources)
+thread_count: 10
+
+# Timeout in seconds for network requests
+timeout: 30
+
+# Number of retries for failed requests
+max_retries: 3
+
+#-------------------------------------------------------------------------------
+# Output Configuration
+#-------------------------------------------------------------------------------
+# Base directory for all output (timestamped subdirectories created automatically)
+output_dir: ./recon_output
+
+# Directory for wordlists and resolvers
+wordlist_path: ./wordlists
+
+# Custom resolver file (one IP per line, leave empty to use system resolvers)
+resolvers: ./resolvers.txt
+
+#-------------------------------------------------------------------------------
+# Tool-Specific Settings
+#-------------------------------------------------------------------------------
+# Subdomain enumeration timeout (seconds)
+subfinder_timeout: 30
+
+# Port scan settings
+naabu_top_ports: 1000
+naabu_rate: 100
+
+# HTTP probing settings
+httpx_threads: 50
+httpx_timeout: 10
+
+# Crawling settings
+katana_depth: 3
+gospider_threads: 10
+gospider_concurrency: 10
+
+# Vulnerability scanning settings
+nuclei_severity: "low,medium,high,critical"
+nuclei_rate_limit: 50
+nuclei_bulk_size: 10
+nuclei_concurrency: 10
+
+#-------------------------------------------------------------------------------
+# API Keys (Optional - uncomment and add your keys for enhanced results)
+#-------------------------------------------------------------------------------
+# subfinder_api_keys:
+#   virustotal: YOUR_VIRUSTOTAL_API_KEY
+#   securitytrails: YOUR_SECURITYTRAILS_API_KEY
+#   shodan: YOUR_SHODAN_API_KEY
+
+# nuclei_templates_url: https://github.com/projectdiscovery/nuclei-templates
+
+#-------------------------------------------------------------------------------
+# Advanced Options
+#-------------------------------------------------------------------------------
+# Enable/disable specific stages (true/false)
+enable_subdomain_enum: true
+enable_port_scan: true
+enable_http_probing: true
+enable_url_crawling: true
+enable_secret_scanning: true
+enable_vuln_scanning: true
+
+# Passive mode only (no active scanning)
+passive_mode_only: false
+
+# Verbose logging
+verbose: false
+
+# Debug mode
+debug: false
